@@ -2,15 +2,15 @@
 
 <html lang="en">
     
-<? php
-    
+    <?php
+
     session_start(); // to allow variable transfer between pages...
     include("config.php");
     
     // Connect to database...
     $dbconnect=mysqli_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
     
-    if(mysqil_connect_errno()) {
+    if(mysqli_connect_errno()) {
     echo "Connection failed:".mysqli_connect_error();
     exit;
     }
@@ -48,3 +48,5 @@
         <div class="box banner">
             <h1>Games Database</h1>        
         </div> <!-- / banner -->
+                       
+            
