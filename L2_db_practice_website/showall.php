@@ -4,6 +4,7 @@
         $find_sql = "SELECT * FROM `L2_prac_game_detail` ";
         $fnid_query = mysqli_query($dbconnect, $find_sql);
         $find_rs = mysqli_fetch_assoc($find_query);
+        $count = mysqli_num_rows($find_query);
 
 ?>
 
@@ -28,8 +29,32 @@
             else {
                 do {
                     
+                    ?>
+            
+            <!-- Results go here -->
+            <div class="results">
+                <span class="sub_heading">
+                    <a href="<?php echo $find_rs['URL']; ?> ">
+                        <?php echo $find_rs['Name']; ?>
+                    </a>
+                </span>
+                
+                <br />
+            
+            <?php echo $find_rs['GenreID'] ?>
+            <?php echo $find_rs['Genre'] ?>
+            
+            </div> <!-- / results -->
+            
+            <br />
+
+            <?php
                     
                 }  // end results 'do'
+                
+                while 
+                    ($find_rs=mysqli_fetch_assoc($find_query));
+                
             } // end else
             
             ?>
