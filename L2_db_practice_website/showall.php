@@ -3,8 +3,11 @@
 
 
 
-        $find_sql = "SELECT * FROM `L2_prac_game_detail` ";
-        $fnid_query = mysqli_query($dbconnect, $find_sql);
+        // $find_sql = "SELECT * FROM `L2_prac_game_detail` JOIN genre ON (L2_prac_game_detail.GenreID = L2_prac_genre.GenreID) JOIN developer ON (L2_prac_game_detail.DeveloperID = L2_db_prac_developer.DeveloperID)";
+
+        $find_sql = "SELECT * FROM `L2_prac_game_detail` JOIN `L2_prac_genre` ON (`L2_prac_game_detail`.`GenreID`=`L2_prac_genre`.`GenreID`) ";
+        $find_sql = "SELECT * FROM `L2_prac_game_detail` JOIN `L2_db_prac_developer` ON (`L2_prac_game_detail`.`DeveloperID`=`L2_db_prac_developer`.`DevID`) ";
+        $find_query = mysqli_query($dbconnect, $find_sql);
         $find_rs = mysqli_fetch_assoc($find_query);
         $count = mysqli_num_rows($find_query);
 
@@ -41,11 +44,17 @@
                     </a>
                 </span>
                 
+            <p>
+            
+                <b>Genre</b>:
+                <?php echo $find_rs['Genre'] ?>
+                
                 <br />
-            
-            <?php echo $find_rs['GenreID'] ?>
-            <?php echo $find_rs['Genre'] ?>
-            
+                
+                <b>Developer</b>:
+                <?php echo $find_rs['Developer Name'] ?>
+
+            </p>
             </div> <!-- / results -->
             
             <br />
