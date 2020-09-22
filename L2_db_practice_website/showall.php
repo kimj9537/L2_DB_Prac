@@ -3,10 +3,8 @@
 
 
 
-        // $find_sql = "SELECT * FROM `L2_prac_game_detail` JOIN genre ON (L2_prac_game_detail.GenreID = L2_prac_genre.GenreID) JOIN developer ON (L2_prac_game_detail.DeveloperID = L2_db_prac_developer.DeveloperID)";
+        $find_sql = "SELECT * FROM `L2_prac_game_detail` JOIN `L2_prac_genre` ON (`L2_prac_game_detail`.`GenreID`=`L2_prac_genre`.`GenreID`) JOIN `L2_db_prac_developer` ON (`L2_prac_game_detail`.`DeveloperID`=`L2_db_prac_developer`.`DevID`)";
 
-        $find_sql = "SELECT * FROM `L2_prac_game_detail` JOIN `L2_prac_genre` ON (`L2_prac_game_detail`.`GenreID`=`L2_prac_genre`.`GenreID`) ";
-        $find_sql = "SELECT * FROM `L2_prac_game_detail` JOIN `L2_db_prac_developer` ON (`L2_prac_game_detail`.`DeveloperID`=`L2_db_prac_developer`.`DevID`) ";
         $find_query = mysqli_query($dbconnect, $find_sql);
         $find_rs = mysqli_fetch_assoc($find_query);
         $count = mysqli_num_rows($find_query);
@@ -42,19 +40,25 @@
                     <a href="<?php echo $find_rs['URL']; ?> ">
                         <?php echo $find_rs['Name']; ?>
                     </a>
-                </span>
+                </span> - <?php echo $find_rs['Subtitle'] ?>
                 
             <p>
             
-                <b>Genre</b>:
-                <?php echo $find_rs['Genre'] ?>
-                
-                <br />
-                
-                <b>Developer</b>:
-                <?php echo $find_rs['Developer Name'] ?>
+            <b>Genre</b>:
+            <?php echo $find_rs['Genre'] ?>
+
+            <br />
+
+            <b>Developer</b>:
+            <?php echo $find_rs['Developer Name'] ?>
+
+            <br />
+            <b>Rating</b>: <?php echo $find_rs['User Rating Count'] ?> (based on <?php echo $find_rs['User Rating Count'] ?> votes)
 
             </p>
+            <hr />
+            <?php echo $find_rs['Description'] ?>
+
             </div> <!-- / results -->
             
             <br />
